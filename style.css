@@ -1,0 +1,559 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "DM Sans", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            #ffd6e7,
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            #f5bcd3,
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #fff5f9,
+            #ffe5ef
+        );
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   FLOATING DECORATIONS
+========================= */
+
+.floating {
+    position: fixed;
+
+    color: #df91b0;
+
+    opacity: 0.5;
+
+    pointer-events: none;
+
+    animation: float 4s ease-in-out infinite;
+}
+
+.heart-one {
+    top: 12%;
+    left: 15%;
+
+    font-size: 45px;
+}
+
+.heart-two {
+    bottom: 15%;
+    right: 14%;
+
+    font-size: 35px;
+
+    animation-delay: 1s;
+}
+
+.star-one {
+    top: 22%;
+    right: 17%;
+
+    font-size: 32px;
+
+    animation-delay: 0.5s;
+}
+
+.star-two {
+    bottom: 20%;
+    left: 17%;
+
+    font-size: 28px;
+
+    animation-delay: 1.5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.calculator-container {
+    width: 100%;
+    max-width: 390px;
+
+    padding: 20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.calculator-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    padding: 0 8px;
+}
+
+.mini-title {
+    font-family: "Quicksand", sans-serif;
+
+    font-size: 12px;
+
+    color: #b87594;
+
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-family: "Quicksand", sans-serif;
+
+    color: #6d3e54;
+
+    font-size: 27px;
+
+    font-weight: 700;
+}
+
+h1 span {
+    color: #dd82a6;
+}
+
+
+/* =========================
+   SPARKLE
+========================= */
+
+.sparkle {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #dd82a6;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 0 12px rgba(224, 128, 166, 0.3);
+
+    animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12) rotate(8deg);
+    }
+}
+
+
+/* =========================
+   CALCULATOR
+========================= */
+
+.calculator {
+    padding: 20px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border: 1px solid white;
+
+    box-shadow:
+        0 25px 60px rgba(185, 90, 130, 0.18),
+        0 0 30px rgba(255, 173, 205, 0.15);
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* =========================
+   DISPLAY
+========================= */
+
+.display-box {
+    height: 125px;
+
+    padding: 16px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    border-radius: 22px;
+
+    background: #fff1f6;
+
+    border: 1px solid #f7d4e2;
+
+    box-shadow:
+        inset 0 0 20px rgba(255, 180, 210, 0.15);
+}
+
+.history {
+    height: 20px;
+
+    color: #c18ba2;
+
+    font-size: 13px;
+
+    text-align: right;
+}
+
+.display {
+    min-height: 48px;
+
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    color: #653c4f;
+
+    font-family: "Quicksand", sans-serif;
+
+    font-size: 37px;
+
+    font-weight: 700;
+
+    word-break: break-all;
+}
+
+#empty-face {
+    color: #db91ae;
+
+    font-size: 25px;
+
+    animation: cuteFace 2s infinite;
+}
+
+@keyframes cuteFace {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+.message {
+    min-height: 18px;
+
+    color: #c5819d;
+
+    font-size: 11px;
+
+    text-align: right;
+}
+
+
+/* =========================
+   BUTTON GRID
+========================= */
+
+.buttons {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+/* =========================
+   BUTTON BASE
+========================= */
+
+.btn {
+    height: 62px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    font-family: "Quicksand", sans-serif;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+
+    outline: none;
+}
+
+
+/* =========================
+   NUMBER
+========================= */
+
+.number {
+    background: #fff8fb;
+
+    color: #704557;
+
+    border: 1px solid #f5d9e5;
+}
+
+.number:hover {
+    background: #ffe9f2;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 10px rgba(255, 165, 198, 0.6),
+        0 0 25px rgba(255, 165, 198, 0.35);
+}
+
+
+/* =========================
+   FUNCTION
+========================= */
+
+.function {
+    background: #f7d5e3;
+
+    color: #955570;
+}
+
+.function:hover {
+    background: #f2c2d5;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 10px rgba(230, 140, 175, 0.7),
+        0 0 25px rgba(230, 140, 175, 0.4);
+}
+
+
+/* =========================
+   OPERATOR
+========================= */
+
+.operator {
+    background: #e6a0bc;
+
+    color: white;
+
+    box-shadow:
+        0 0 8px rgba(220, 130, 170, 0.35);
+}
+
+.operator:hover {
+    background: #d987aa;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 12px rgba(230, 125, 170, 0.9),
+        0 0 30px rgba(230, 125, 170, 0.65),
+        0 0 50px rgba(230, 125, 170, 0.3);
+}
+
+
+/* =========================
+   EQUALS
+========================= */
+
+.equals {
+    background: #c86b96;
+
+    color: white;
+
+    box-shadow:
+        0 0 10px rgba(200, 100, 150, 0.45);
+}
+
+.equals:hover {
+    background: #b95785;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 12px rgba(230, 110, 165, 1),
+        0 0 30px rgba(230, 110, 165, 0.75),
+        0 0 55px rgba(230, 110, 165, 0.45);
+}
+
+
+/* =========================
+   CLICK EFFECT
+========================= */
+
+.btn:active {
+    transform: scale(0.9);
+}
+
+.btn.clicked {
+    animation: buttonGlow 0.3s ease;
+}
+
+@keyframes buttonGlow {
+
+    0% {
+        box-shadow:
+            0 0 0 rgba(255, 140, 185, 0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 15px rgba(255, 140, 185, 1),
+            0 0 35px rgba(255, 140, 185, 0.7),
+            0 0 55px rgba(255, 140, 185, 0.4);
+    }
+
+    100% {
+        box-shadow:
+            0 0 5px rgba(255, 170, 200, 0.3);
+    }
+}
+
+
+/* =========================
+   RESULT ANIMATION
+========================= */
+
+.result-animation {
+    animation: resultPop 0.35s ease;
+}
+
+@keyframes resultPop {
+
+    0% {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+
+    70% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    margin-top: 17px;
+
+    text-align: center;
+
+    color: #bd819a;
+
+    font-size: 10px;
+}
+
+.footer span {
+    color: #dc759e;
+
+    margin: 0 3px;
+
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 420px) {
+
+    .calculator-container {
+        padding: 12px;
+    }
+
+    .calculator {
+        padding: 16px;
+    }
+
+    .btn {
+        height: 57px;
+    }
+
+    .display {
+        font-size: 31px;
+    }
+
+    .floating {
+        display: none;
+    }
+}
